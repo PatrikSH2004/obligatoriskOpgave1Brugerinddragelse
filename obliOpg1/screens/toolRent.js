@@ -1,15 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Alert, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import globalStyles, { colors } from '../styles/globalStyles';
 
 const statusDetails = {
   rented: {
     label: 'Rented',
-    color: '#d64545',
+    color: colors.occupied,
   },
   available: {
     label: 'Available',
-    color: '#4cae61',
+    color: colors.available,
   },
 };
 
@@ -91,21 +92,15 @@ export default function RentTools() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#f5f7f4',
-    padding: 24,
+    ...globalStyles.screen,
     paddingTop: 64,
   },
   title: {
-    color: '#1f2a24',
-    fontSize: 28,
-    fontWeight: '700',
+    ...globalStyles.title,
     marginBottom: 8,
   },
   subtitle: {
-    color: '#607067',
-    fontSize: 15,
-    lineHeight: 22,
+    ...globalStyles.subtitle,
     marginBottom: 24,
   },
   legend: {
@@ -125,7 +120,7 @@ const styles = StyleSheet.create({
     width: 12,
   },
   legendText: {
-    color: '#526058',
+    color: colors.forest,
     fontSize: 13,
   },
   toolList: {
@@ -165,10 +160,10 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   pressedToolRow: {
-    backgroundColor: '#398c4d',
+    backgroundColor: colors.forestPressed,
   },
   actionHint: {
-    color: '#ffffff',
+    color: colors.white,
     fontSize: 13,
     fontWeight: '700',
   },

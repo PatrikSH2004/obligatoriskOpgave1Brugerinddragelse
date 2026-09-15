@@ -1,19 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Alert, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import globalStyles, { colors } from '../styles/globalStyles';
 
 const statusDetails = {
   occupied: {
     label: 'Occupied',
-    color: '#d64545',
+    color: colors.occupied,
   },
   reserved: {
     label: 'Reserved',
-    color: '#e5b93f',
+    color: colors.reserved,
   },
   available: {
     label: 'Available',
-    color: '#4cae61',
+    color: colors.available,
   },
 };
 
@@ -101,21 +102,15 @@ export default function BasementRoom() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#f5f7f4',
-    padding: 24,
+    ...globalStyles.screen,
     paddingTop: 64,
   },
   title: {
-    color: '#1f2a24',
-    fontSize: 28,
-    fontWeight: '700',
+    ...globalStyles.title,
     marginBottom: 8,
   },
   subtitle: {
-    color: '#607067',
-    fontSize: 15,
-    lineHeight: 22,
+    ...globalStyles.subtitle,
     marginBottom: 24,
   },
   legend: {
@@ -135,7 +130,7 @@ const styles = StyleSheet.create({
     width: 12,
   },
   legendText: {
-    color: '#526058',
+    color: colors.forest,
     fontSize: 13,
   },
   roomList: {
@@ -144,8 +139,8 @@ const styles = StyleSheet.create({
   },
   roomRow: {
     alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderColor: '#e1e7e2',
+    backgroundColor: colors.sand,
+    borderColor: colors.border,
     borderRadius: 10,
     borderWidth: 1,
     flexDirection: 'row',
@@ -165,12 +160,12 @@ const styles = StyleSheet.create({
     width: 16,
   },
   roomName: {
-    color: '#25332b',
+    color: colors.forest,
     fontSize: 16,
     fontWeight: '600',
   },
   statusText: {
-    color: '#718077',
+    color: colors.muted,
     fontSize: 13,
   },
   reserveButton: {
@@ -184,10 +179,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   pressedButton: {
-    backgroundColor: '#398c4d',
+    backgroundColor: colors.forestPressed,
   },
   buttonText: {
-    color: '#ffffff',
+    color: colors.white,
     fontSize: 13,
     fontWeight: '700',
   },
