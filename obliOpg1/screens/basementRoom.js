@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Alert, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import globalStyles, { colors } from '../styles/globalStyles';
 
+// Data som angiver status. Dertil hvad der skal stå på knappen, og hvilken farve der skal vises.
 const statusDetails = {
   occupied: {
     label: 'Occupied',
@@ -18,6 +19,7 @@ const statusDetails = {
   },
 };
 
+// Data som giver et eksempel på de forskellige rum. Der viser hvilke er optaget, og hvilke er stadigvæk åbne
 const initialRooms = [
   { id: 'A1', status: 'occupied' },
   { id: 'A2', status: 'reserved' },
@@ -33,9 +35,12 @@ const initialRooms = [
   { id: 'B6', status: 'available' },
 ];
 
+// Funktion som skal renders i App.js.
 export default function BasementRoom() {
+  {/* Funktion som tillader os at ændre tilstand i en property*/}
   const [rooms, setRooms] = useState(initialRooms);
 
+  {/* Funktion der kan bruges til at reservere et rum. Under betingelsen af at det er tilgængeligt*/}
   function reserveRoom(roomId) {
     setRooms((currentRooms) =>
       currentRooms.map((room) =>
@@ -44,14 +49,17 @@ export default function BasementRoom() {
           : room,
       ),
     );
+      {/*Simpel alert som giver information til beboreren */}
       Alert.alert('Room booked', `Room ${roomId} has been booked. Please collect the key at office hours.`);
   }
 
+  // Det som skal returneres til App.js.
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Basement rooms</Text>
       <Text style={styles.subtitle}>Check the current status and reserve an available basement room for your belongings.</Text>
 
+      {/* Bruges til at vise de forskellige statuser og hvad de betyder*/}
       <View style={styles.legend}>
         {Object.entries(statusDetails).map(([status, details]) => (
           <View key={status} style={styles.legendItem}>
@@ -60,15 +68,16 @@ export default function BasementRoom() {
           </View>
         ))}
       </View>
-
+      
+      {/* Bruges til at vise de forskellige rum og deres status i en liste*/}
       <FlatList
         contentContainerStyle={styles.roomList}
         data={rooms}
         keyExtractor={(room) => room.id}
         renderItem={({ item: room }) => {
+          {/* Render alle kælderrum i listen*/}
           const details = statusDetails[room.status];
           const isAvailable = room.status === 'available';
-
           return (
             <View key={room.id} style={styles.roomRow}>
               <View style={styles.roomInfo}>
@@ -76,7 +85,7 @@ export default function BasementRoom() {
                 <Text style={styles.roomName}>Room {room.id}</Text>
                 <Text style={styles.statusText}>{details.label}</Text>
               </View>
-
+              {/* Laver en reserveringsknap til hvert tilgængeligt rum */}
               <Pressable
                 accessibilityLabel={`${isAvailable ? 'Reserve' : details.label} room ${room.id}`}
                 accessibilityRole="button"
@@ -100,6 +109,7 @@ export default function BasementRoom() {
   );
 }
 
+// Styling fra globalStyles og colors, samt nogle ekstra styles til denne skærm.
 const styles = StyleSheet.create({
   container: {
     ...globalStyles.screen,

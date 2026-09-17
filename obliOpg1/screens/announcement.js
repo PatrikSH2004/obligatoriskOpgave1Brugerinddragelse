@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import globalStyles, { colors } from '../styles/globalStyles';
 
+// Basis data som angiver announcments til netop administrationens nyheder til beborerne
 const administrationAnnouncements = [
   {
     id: '1',
@@ -16,7 +17,7 @@ const administrationAnnouncements = [
     text: 'The tenant committee is organizing a trip to Knuthenborg Safari Park on September 30. Sign up at the office to reserve your spot. There are 30 spots available. The trip is free for all tenants.',
   },
 ];
-
+// Samme som forrige, men her blot for beborer.
 const tenantAnnouncements = [
   {
     id: '1',
@@ -38,14 +39,17 @@ const tenantAnnouncements = [
   },
 ];
 
+// Funktionen som skal renders i App.js
 export default function Announcement() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Announcements</Text>
+      {/*Sikre at vi kan scrolle igennem hele vores view*/}
 
+      <Text style={styles.title}>Announcements</Text>
       <Text style={styles.sectionTitle}>Administration announcements</Text>
       <View style={styles.sectionDivider} />
 
+      {/* Dette opdeler et nyt view til alle administrationens annonceringer */}
       {administrationAnnouncements.map((announcement) => (
         <View key={announcement.id} style={styles.announcementCard}>
           <Image
@@ -62,7 +66,7 @@ export default function Announcement() {
 
       <Text style={styles.sectionTitle}>Tenant announcements</Text>
   <View style={styles.sectionDivider} />
-
+      {/* Samme som forrige kommentar. Men her gælder det for beborer annoncerings-datasæt */}
       {tenantAnnouncements.map((announcement) => (
         <View key={announcement.id} style={styles.tenantAnnouncementCard}>
           <Text style={styles.announcementHeader}>{announcement.header}</Text>
@@ -75,7 +79,7 @@ export default function Announcement() {
     </ScrollView>
   );
 }
-
+// Styles for denne screen. Men vi genbruger dele fra globalStyles.js
 const styles = StyleSheet.create({
   container: {
     ...globalStyles.scrollContent,

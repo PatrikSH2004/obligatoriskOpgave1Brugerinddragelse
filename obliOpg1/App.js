@@ -21,6 +21,7 @@ export default function App() {
           tabBarStyle: { backgroundColor: colors.sandLight },
         }}
       >
+        {/* De tre hoved screens til denne opgave*/}
         <tab.Screen name="Announcements" component={Announcement} />
         <tab.Screen name="Borrow Tools" component={RentTools}/>
         <tab.Screen name="Basement Room" component={BasementRoom} />

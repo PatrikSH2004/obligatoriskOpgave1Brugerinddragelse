@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+// Styling og farver som kan bruges på tværs af alle skærme i appen.
 export const colors = {
 	forest: '#234d3c',
 	forestLight: '#3f765c',
@@ -16,6 +17,7 @@ export const colors = {
 	occupied: '#d64545',
 };
 
+// Global styles som kan bruges på tværs af alle skærme i appen.
 const globalStyles = StyleSheet.create({
 	screen: {
 		backgroundColor: colors.sandLight,

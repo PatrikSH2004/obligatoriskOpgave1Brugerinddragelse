@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Alert, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import globalStyles, { colors } from '../styles/globalStyles';
 
+// De muligt statusser som et værktøj kan have.
 const statusDetails = {
   rented: {
     label: 'Rented',
@@ -14,6 +15,7 @@ const statusDetails = {
   },
 };
 
+// Data som giver et eksempel på forskellige værktøjer og deres status.
 const initialTools = [
   { id: 'T1', name: 'Power drill', status: 'rented' },
   { id: 'T2', name: 'Circular saw', status: 'rented' },
@@ -23,6 +25,7 @@ const initialTools = [
   { id: 'T6', name: 'Toolbox', status: 'available' },
 ];
 
+// En funktion der gør det muligt at ændre status på et værktøj.
 export default function RentTools() {
   const [tools, setTools] = useState(initialTools);
 
@@ -37,11 +40,13 @@ export default function RentTools() {
     Alert.alert('Tool rented', `The ${tools.find((tool) => tool.id === toolId)?.name} can be collected in office hours. Remember to return it to avoid additional fees.`);
   }
 
+  // Det som skal returneres til App.js som brugeren skal kunne se.
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Rent tools</Text>
       <Text style={styles.subtitle}>Check the current status and rent an available tool.</Text>
 
+      {/* Bruges til at vise de forskellige statuser og hvad de betyder*/}
       <View style={styles.legend}>
         {Object.entries(statusDetails).map(([status, details]) => (
           <View key={status} style={styles.legendItem}>
@@ -51,6 +56,7 @@ export default function RentTools() {
         ))}
       </View>
 
+      {/* Bruges til at vise de forskellige værktøjer og deres status i en liste*/}
       <FlatList
         contentContainerStyle={styles.toolList}
         data={tools}
@@ -59,6 +65,7 @@ export default function RentTools() {
           const details = statusDetails[tool.status];
           const isAvailable = tool.status === 'available';
 
+          {/* Render alle værktøjer i listen med deres status og knap til at leje dem */}
           return (
             <Pressable
               accessibilityLabel={`${isAvailable ? 'Rent' : details.label} ${tool.name}`}
@@ -90,6 +97,7 @@ export default function RentTools() {
   );
 }
 
+// Styling fra globalStyles og colors, samt nogle ekstra styles til denne skærm.
 const styles = StyleSheet.create({
   container: {
     ...globalStyles.screen,
