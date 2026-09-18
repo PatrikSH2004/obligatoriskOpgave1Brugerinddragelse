@@ -1,12 +1,8 @@
-# obligatoriskOpgave1Brugerinddragelse
-
-# to do
-- Få lavet en video til appen
-- Få lavet en guide på Readme (?)
+# ObligatoriskOpgave1Brugerinddragelse
 
 ## Link til demovideo
 
-[Indsæt her]
+https://youtube.com/shorts/pSint8Hvyts?feature=share
 
 ## Om appen
 Dette er koden til første godkendelsesopgave. 
